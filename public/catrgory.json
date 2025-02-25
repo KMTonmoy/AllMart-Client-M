@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Watches",
+        "image": "https://media.wired.com/photos/66180ed0c1ba76f5ce2ff268/16:9/w_2400,h_1350,c_limit/Rolex.jpg",
+        "description": "Premium quality wristwatches for men and women."
+    },
+    {
+        "name": "Shoes",
+        "image": "https://img.drz.lazcdn.com/static/bd/p/6502ea35eac4cbdc199499e394609c5f.jpg_720x720q80.jpg",
+        "description": "Stylish and comfortable shoes for all occasions."
+    },
+    {
+        "name": "Bags",
+        "image": "https://m.media-amazon.com/images/I/61GpT8+nFXL._AC_SL1008_.jpg",
+        "description": "Elegant handbags and backpacks for daily use."
+    },
+    {
+        "name": "Glasses",
+        "image": "https://rukminim2.flixcart.com/image/850/1000/sunglass/q/5/h/0rb3025i001-58-ray-ban-58-original-imadrnwqpmp8jbd6.jpeg?q=90&crop=false",
+        "description": "Trendy sunglasses and eyeglasses for eye protection."
+    },
+    {
+        "name": "Jewelry",
+        "image": "https://jewelrydesigns.com/wp-content/uploads/hlp2-1-browse-jewelry-collection-1.jpg",
+        "description": "Exclusive jewelry collection for a glamorous look."
+    },
+    {
+        "name": "Perfume",
+        "image": "https://www.wildstone.in/cdn/shop/files/Artboard_3_f0a9a067-92da-4007-a17d-9f6e483ff0c3_1946x.jpg?v=1721215797",
+        "description": "Luxury fragrances to enhance your presence."
+    }
+]

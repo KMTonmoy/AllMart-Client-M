@@ -1,0 +1,678 @@
+[
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Watches",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Watches",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Watches",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Watches",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Watches",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 1,
+        "name": "Golden Watch Classic",
+        "category": "Jewelry",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Watches",
+            "Gift"
+        ],
+        "description": "A timeless golden watch for the elegant you.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FFFFFF",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://img.drz.lazcdn.com/static/bd/p/e96bec07774db615c9d17a8011376dc9.jpg_720x720q80.jpg_.webp",
+            "https://www.citizenwatch.co.uk/media/catalog/product/e/m/em1052-51a_catalog.png?optimize=high&bg-color=255,255,255&fit=bounds&height=1000&width=1000&canvas=1000:1000&format=jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdy8SRrhbryI7ZMl-wlgkdDo0KBwdkyj_V0Q&s",
+            "https://titanwatches.com.bd/cdn/shop/files/8178YM03_2_6528f1ef-20d8-4b7f-925e-e4fb525c5624.jpg?v=1711703042&width=1445"
+        ],
+        "gender": "man"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 2,
+        "name": "Sapphire Earrings",
+        "category": "Jewelry",
+        "price": 55,
+        "tags": [
+            "Elegant",
+            "Jewelry",
+            "Gift"
+        ],
+        "description": "Dazzling sapphire earrings that add a touch of sophistication.",
+        "stock": 30,
+        "colors": [
+            "#003366",
+            "#4CAF50",
+            "#D1B2FF",
+            "#FF8C00"
+        ],
+        "images": [
+            "https://paulbram.com.au/cdn/shop/files/PBDJ-LP0036__001-016-00300__VE0337L1__Ivy---Oval-Sapphire-Earrings__front_149866e2-7e8b-4efe-a86d-0642e50a7a7b_1800x.webp?v=1721711525",
+            "https://gearjewellers.ie/cdn/shop/files/daydream-sapphire-diamond-earrings-18ct-gold-gear-jewellers-dublin-604.jpg?v=1728475029",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHUIZvL_37cRTD1PJIa1sPjjvvnKysLVn2l84gBCbaxjzy9TfhiKWvsFpEWFuTGXRGVs&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr8YvYkyvas4GohKVtXfQIeIpIahNFX2gdTA&s"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 3,
+        "name": "Leather Backpack",
+        "category": "Bags",
+        "price": 80,
+        "tags": [
+            "Fashion",
+            "Bags",
+            "Travel"
+        ],
+        "description": "Durable leather backpack perfect for both work and travel.",
+        "stock": 25,
+        "colors": [
+            "#3E2723",
+            "#9C27B0",
+            "#4CAF50",
+            "#FFC107"
+        ],
+        "images": [
+            "https://ssbleather.com/wp-content/uploads/2023/06/AAJ-Backpack-BP132-3.jpg",
+            "https://images.othoba.com/images/thumbs/0699278_a-leather-backpack-2.webp",
+            "https://example.com/images/backpack1_3.jpg",
+            "https://example.com/images/backpack1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 4,
+        "name": "Winter Jacket",
+        "category": "Clothing",
+        "price": 65,
+        "tags": [
+            "Fashion",
+            "Winter",
+            "Outwear"
+        ],
+        "description": "A cozy winter jacket to keep you warm in the cold season.",
+        "stock": 50,
+        "colors": [
+            "#000000",
+            "#FF5733",
+            "#C70039",
+            "#900C3F"
+        ],
+        "images": [
+            "https://example.com/images/jacket1_1.jpg",
+            "https://example.com/images/jacket1_2.jpg",
+            "https://example.com/images/jacket1_3.jpg",
+            "https://example.com/images/jacket1_4.jpg"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 5,
+        "name": "Smartphone Pro",
+        "category": "Electronics",
+        "price": 700,
+        "tags": [
+            "Tech",
+            "Electronics",
+            "Gadget"
+        ],
+        "description": "The latest smartphone with a powerful processor and stunning display.",
+        "stock": 10,
+        "colors": [
+            "#000000",
+            "#FFFFFF",
+            "#FF8C00",
+            "#00BCD4"
+        ],
+        "images": [
+            "https://example.com/images/smartphone1_1.jpg",
+            "https://example.com/images/smartphone1_2.jpg",
+            "https://example.com/images/smartphone1_3.jpg",
+            "https://example.com/images/smartphone1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 6,
+        "name": "Silk Scarf",
+        "category": "Accessories",
+        "price": 45,
+        "tags": [
+            "Luxury",
+            "Accessories",
+            "Fashion"
+        ],
+        "description": "A smooth and elegant silk scarf perfect for all occasions.",
+        "stock": 40,
+        "colors": [
+            "#8A2BE2",
+            "#FF1493",
+            "#FFD700",
+            "#000080"
+        ],
+        "images": [
+            "https://example.com/images/scarf1_1.jpg",
+            "https://example.com/images/scarf1_2.jpg",
+            "https://example.com/images/scarf1_3.jpg",
+            "https://example.com/images/scarf1_4.jpg"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 7,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "price": 120,
+        "tags": [
+            "Tech",
+            "Gadget",
+            "Audio"
+        ],
+        "description": "High-quality wireless headphones with noise cancellation.",
+        "stock": 35,
+        "colors": [
+            "#00BCD4",
+            "#FF5733",
+            "#8B0000",
+            "#000000"
+        ],
+        "images": [
+            "https://example.com/images/headphones1_1.jpg",
+            "https://example.com/images/headphones1_2.jpg",
+            "https://example.com/images/headphones1_3.jpg",
+            "https://example.com/images/headphones1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 8,
+        "name": "Vintage Sunglasses",
+        "category": "Accessories",
+        "price": 25,
+        "tags": [
+            "Fashion",
+            "Accessories",
+            "Luxury"
+        ],
+        "description": "Stylish vintage sunglasses with a modern touch.",
+        "stock": 50,
+        "colors": [
+            "#FF8C00",
+            "#000000",
+            "#FFD700",
+            "#C71585"
+        ],
+        "images": [
+            "https://example.com/images/sunglasses1_1.jpg",
+            "https://example.com/images/sunglasses1_2.jpg",
+            "https://example.com/images/sunglasses1_3.jpg",
+            "https://example.com/images/sunglasses1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 9,
+        "name": "Sports Shoes",
+        "category": "Footwear",
+        "price": 60,
+        "tags": [
+            "Sports",
+            "Footwear",
+            "Comfort"
+        ],
+        "description": "Comfortable and stylish sports shoes for any workout.",
+        "stock": 45,
+        "colors": [
+            "#4CAF50",
+            "#FF5733",
+            "#C70039",
+            "#00BCD4"
+        ],
+        "images": [
+            "https://example.com/images/shoes1_1.jpg",
+            "https://example.com/images/shoes1_2.jpg",
+            "https://example.com/images/shoes1_3.jpg",
+            "https://example.com/images/shoes1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 10,
+        "name": "Portable Speaker",
+        "category": "Electronics",
+        "price": 45,
+        "tags": [
+            "Tech",
+            "Audio",
+            "Portable"
+        ],
+        "description": "A compact portable speaker for on-the-go music enjoyment.",
+        "stock": 40,
+        "colors": [
+            "#FF1493",
+            "#8A2BE2",
+            "#FF8C00",
+            "#00BCD4"
+        ],
+        "images": [
+            "https://example.com/images/speaker1_1.jpg",
+            "https://example.com/images/speaker1_2.jpg",
+            "https://example.com/images/speaker1_3.jpg",
+            "https://example.com/images/speaker1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 11,
+        "name": "Leather Wallet",
+        "category": "Accessories",
+        "price": 30,
+        "tags": [
+            "Fashion",
+            "Leather",
+            "Gift"
+        ],
+        "description": "A sleek and practical leather wallet to keep your essentials safe.",
+        "stock": 60,
+        "colors": [
+            "#8B4513",
+            "#000000",
+            "#D2691E",
+            "#FFD700"
+        ],
+        "images": [
+            "https://example.com/images/wallet1_1.jpg",
+            "https://example.com/images/wallet1_2.jpg",
+            "https://example.com/images/wallet1_3.jpg",
+            "https://example.com/images/wallet1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 12,
+        "name": "Bluetooth Earbuds",
+        "category": "Electronics",
+        "price": 50,
+        "tags": [
+            "Tech",
+            "Audio",
+            "Portable"
+        ],
+        "description": "Compact Bluetooth earbuds with excellent sound quality.",
+        "stock": 70,
+        "colors": [
+            "#000000",
+            "#4CAF50",
+            "#FF5733",
+            "#FFD700"
+        ],
+        "images": [
+            "https://example.com/images/earbuds1_1.jpg",
+            "https://example.com/images/earbuds1_2.jpg",
+            "https://example.com/images/earbuds1_3.jpg",
+            "https://example.com/images/earbuds1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 13,
+        "name": "Woolen Sweater",
+        "category": "Clothing",
+        "price": 50,
+        "tags": [
+            "Fashion",
+            "Winter",
+            "Comfort"
+        ],
+        "description": "A cozy woolen sweater for cold weather.",
+        "stock": 35,
+        "colors": [
+            "#D2691E",
+            "#8A2BE2",
+            "#000000",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://www.eightyfiveclo.com/cdn/shop/files/5018-22-2565-Heavy-Black-Basic-Sweater1_1.jpg?v=1726576451&width=1600",
+            "https://www.featurestores.de/cdn/shop/files/7492-A50188-Knit-Sweater1_1.jpg?v=1738051989&width=2000",
+            "https://example.com/images/sweater1_3.jpg",
+            "https://example.com/images/sweater1_4.jpg"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 14,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "price": 70,
+        "tags": [
+            "Sports",
+            "Footwear",
+            "Comfort"
+        ],
+        "description": "High-performance running shoes designed for athletes.",
+        "stock": 20,
+        "colors": [
+            "#4CAF50",
+            "#FF5733",
+            "#8B0000",
+            "#000000"
+        ],
+        "images": [
+            "https://contents.mediadecathlon.com/p2636563/k$630aadb09cb78af13a1efa373828275a/jogflow-190-1-men-s-running-shoes-black-grey-kiprun-8757334.jpg",
+            "https://contents.mediadecathlon.com/p2393856/k$9cfe8a5fa9db57a335c69ba013342454/men-s-running-shoes-jogflow-1001-black-grey.jpg?format=auto&quality=70&f=1366x1366",
+            "https://example.com/images/runningshoes1_3.jpg",
+            "https://example.com/images/runningshoes1_4.jpg"
+        ],
+        "gender": "baby"
+    },
+    {
+        "id": 15,
+        "name": "Gold Ring",
+        "category": "Jewelry",
+        "price": 120,
+        "tags": [
+            "Luxury",
+            "Gold",
+            "Jewelry"
+        ],
+        "description": "An elegant gold ring, the perfect piece for any occasion.",
+        "stock": 15,
+        "colors": [
+            "#FFD700",
+            "#000000",
+            "#FF5733",
+            "#4CAF50"
+        ],
+        "images": [
+            "https://mdsmobile.ae/cdn/shop/files/E2C6DA4A-BA71-4601-9F27-2CCBE0A0FBAF_044bbd51-168d-469a-a1c9-43d8275dc165_800x.jpg?v=1727867929",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBFQoohR03Kx2zuTWnkP41T65DLRez8OFFQ&s",
+            "https://example.com/images/ring1_3.jpg",
+            "https://example.com/images/ring1_4.jpg"
+        ],
+        "gender": "woman"
+    },
+    {
+        "id": 16,
+        "name": "Smart Watch",
+        "category": "Electronics",
+        "price": 150,
+        "tags": [
+            "Tech",
+            "Smart Watch",
+            "Fitness"
+        ],
+        "description": "A smartwatch with fitness tracking features.",
+        "stock": 25,
+        "colors": [
+            "#000000",
+            "#FF5733",
+            "#00BCD4",
+            "#FFD700"
+        ],
+        "images": [
+            "https://rukminim2.flixcart.com/image/850/1000/k65d18w0/smartwatch/f/a/z/dz093-sneeze-original-imafzz67zezygykp.jpeg?q=90&crop=false",
+            "https://images.meesho.com/images/products/431396084/4mlsp_512.webp",
+            "https://example.com/images/smartwatch1_3.jpg",
+            "https://example.com/images/smartwatch1_4.jpg"
+        ],
+        "gender": "baby"
+    }
+]
