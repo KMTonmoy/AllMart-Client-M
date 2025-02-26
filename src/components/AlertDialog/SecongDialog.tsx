@@ -62,11 +62,11 @@ export function ProductFormDialog() {
         setProduct((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
-    const handleTagInput = (e: React.KeyboardEvent<HTMLInputElement>, field: keyof Product) => {
+    const handleTagInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === " " && e.currentTarget.value.trim()) {
             const value = e.currentTarget.value.trim();
-            if (!product[field].includes(value)) {
-                setProduct((prev) => ({ ...prev, [field]: [...prev[field] as string[], value] }));
+            if (!product.tags.includes(value)) {
+                setProduct((prev) => ({ ...prev, tags: [...prev.tags, value] }));
             }
             e.currentTarget.value = "";
         }
@@ -90,7 +90,7 @@ export function ProductFormDialog() {
         if (!e.target.files) return;
         const files = Array.from(e.target.files);
         if (files.length + product.images.length > 4) return;
-        
+
         setLoading(true);
 
         const uploadedImages = await Promise.all(
@@ -202,6 +202,8 @@ export function ProductFormDialog() {
                             ))}
                         </div>
 
+
+
                         <Label>Images</Label>
                         <Input type="file" accept="image/*" multiple onChange={handleImageUpload} />
                         <div className="flex flex-wrap gap-2 mt-2">
@@ -221,6 +223,42 @@ export function ProductFormDialog() {
 
                 {step === 2 && (
                     <div>
+
+                        <div className="mb-20">
+                            <Label>Tags</Label>
+                            <Input
+                                onKeyDown={handleTagInput}
+                                placeholder="Add a tag"
+                            />
+                            <div className="flex gap-2 mt-2">
+                                {product.tags.map((tag, index) => (
+                                    <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
+                                        {tag}
+                                        <button onClick={() => removeItem("tags", tag)} className="ml-2 text-red-500">
+                                            <X size={12} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <Label>Colors</Label>
+                            <Input
+                                onKeyDown={handleColorInput}
+                                placeholder="Add a color"
+                            />
+
+                            <div className="flex gap-2 mt-2">
+                                {product.colors.map((color, index) => (
+                                    <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
+                                        {color}
+                                        <button onClick={() => removeItem("colors", color)} className="ml-2 text-red-500">
+                                            <X size={12} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                         <Label>Description</Label>
                         <JoditEditor value={product.description} onBlur={(newContent) => setProduct({ ...product, description: newContent })} />
 

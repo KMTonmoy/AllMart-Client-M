@@ -52,12 +52,9 @@ export function TableDemo({ products }: TableDemoProps) {
 
   useEffect(() => {
     if (products.length > 0) {
-      setProductList(products);
+      setProductList([...products].reverse());
     }
   }, [products]);
-
-  console.log("Received products prop:", products);
-  console.log("Product List:", productList);
 
   const totalPages = Math.ceil(productList.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
