@@ -1,15 +1,17 @@
 "use client";
 
 import { AuthContext } from "@/Provider/AuthProvider";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import Swal from "sweetalert2";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 interface UserData {
   _id: string;
@@ -31,6 +33,8 @@ const ProfilePage = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email || "";
   const { width, height } = useWindowSize();
+  const [showAnimation, setShowAnimation] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (email) {
@@ -48,6 +52,10 @@ const ProfilePage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handlePhoneChange = (value: string) => {
+    setFormData({ ...formData, phone: value });
+  };
+
   const handleSave = () => {
     if (!data) return;
 
@@ -60,13 +68,22 @@ const ProfilePage = () => {
       .then((updatedData) => {
         setData(updatedData);
         setEditMode(false);
+
+        Swal.fire({
+          icon: "success",
+          title: "Profile updated successfully!",
+          text: "Your profile has been updated.",
+          confirmButtonText: "OK",
+        }).then(() => {
+          window.location.reload();
+        });
       })
       .catch((error) => console.error("Error updating profile:", error));
   };
 
   const calculateCompletion = () => {
     if (!data) return 0;
-    let fieldsFilled = 2; // Email & Name always available
+    let fieldsFilled = 2;
     if (data.phone) fieldsFilled++;
     if (data.address) fieldsFilled++;
     if (data.zipcode) fieldsFilled++;
@@ -76,10 +93,21 @@ const ProfilePage = () => {
 
   const profileCompletion = Math.round(calculateCompletion());
 
+  useEffect(() => {
+    if (profileCompletion === 100) {
+      setShowAnimation(true);
+      if (audioRef.current) {
+        audioRef.current.play().catch((error) => console.error("Audio play error:", error));
+      }
+      setTimeout(() => setShowAnimation(false), 9000);
+    }
+  }, [profileCompletion]);
+
   return (
     <div className="flex overflow-hidden justify-center items-center min-h-screen bg-gray-100 p-4 relative">
-      {/* Confetti Effect When 100% */}
-      {profileCompletion === 100 && <Confetti width={width} height={height} />}
+      {showAnimation && <Confetti width={width} height={height} />}
+
+      <audio ref={audioRef} src="/celebration.mp3" preload="auto" />
 
       <Card className="w-full max-w-md p-6 shadow-xl bg-white rounded-lg relative overflow-hidden">
         <button
@@ -100,38 +128,20 @@ const ProfilePage = () => {
           <p className="text-gray-500">{data?.email || "Loading..."}</p>
           <p className="text-gray-600">Role: {data?.role || "Loading..."}</p>
 
-          {/* Progress Bar */}
           <div className="mt-4 relative">
             <Progress value={profileCompletion} className="h-2 bg-gray-300" />
             <p className="text-sm text-gray-500 mt-1">
               Profile Completion: {profileCompletion}%
             </p>
-
-            {/* 🔥 Fire Animation When 100% Complete */}
-            <AnimatePresence>
-              {profileCompletion === 100 && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute -top-10 left-1/2 transform -translate-x-1/2"
-                >
-
-
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           <div className="mt-4 space-y-3">
-            <Input
-              name="phone"
-              placeholder="Phone Number"
+            <PhoneInput
+              international
+              defaultCountry="US"
               value={formData.phone || ""}
-              onChange={handleInputChange}
+              onChange={handlePhoneChange}
               disabled={!editMode}
-              className="bg-gray-100"
             />
             <Input
               name="address"
