@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { AuthContext } from "@/Provider/AuthProvider";
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +11,7 @@ import { useWindowSize } from "react-use";
 import Swal from "sweetalert2";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css';
+import Image from 'next/image';
 
 interface UserData {
   _id: string;
@@ -52,7 +52,7 @@ const ProfilePage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: string | undefined) => {
     setFormData({ ...formData, phone: value });
   };
 
@@ -118,9 +118,11 @@ const ProfilePage = () => {
         </button>
         <CardContent className="text-center">
           <div className="relative w-24 h-24 mx-auto mb-4">
-            <img
+            <Image
               src={formData.photo || data?.photo || "/placeholder.png"}
               alt="Profile"
+              width={96}
+              height={96}
               className="w-full h-full rounded-full border-4 border-gray-300"
             />
           </div>

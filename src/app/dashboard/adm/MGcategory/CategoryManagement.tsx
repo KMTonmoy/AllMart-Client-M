@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useEffect, useState, useCallback } from "react";
 import {
   Table,
@@ -24,6 +25,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import Image from 'next/image';
 
 interface CategoryData {
   _id: string;
@@ -39,8 +41,6 @@ interface CateGoryManagementProps {
 const ITEMS_PER_PAGE = 15;
 
 export function CateGoryManagement({ data }: CateGoryManagementProps) {
-
-  console.log(data)
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState<CategoryData[]>([]);
@@ -61,34 +61,24 @@ export function CateGoryManagement({ data }: CateGoryManagementProps) {
     if (!dataToDelete) return;
 
     setLoading(true);
-    try {
-      const response = await fetch(`https://allmartserver.vercel.app/category/${dataToDelete._id}`, {
-        method: "DELETE",
-      });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete data");
-      }
+    await fetch(`https://allmartserver.vercel.app/category/${dataToDelete._id}`, {
+      method: "DELETE",
+    });
 
-      setDataList((prev) => prev.filter((p) => p._id !== dataToDelete._id));
+    setDataList((prev) => prev.filter((p) => p._id !== dataToDelete._id));
 
-      toast.success("Category deleted", {
-        description: `${dataToDelete.name} has been removed.`,
-        duration: 3000,
-      });
+    toast.success("Category deleted", {
+      description: `${dataToDelete.name} has been removed.`,
+      duration: 3000,
+    });
 
-      setTimeout(() => {
-        setDataToDelete(null);
-      }, 3000);
+    setTimeout(() => {
+      setDataToDelete(null);
+    }, 3000);
 
-    } catch (error) {
-      toast.error("Error deleting data", {
-        description: "There was a problem deleting the category.",
-      });
-    } finally {
-      setLoading(false);
-    }
   }, [dataToDelete]);
+
 
   const renderSkeletonLoader = () => {
     return (
@@ -148,7 +138,13 @@ export function CateGoryManagement({ data }: CateGoryManagementProps) {
           {selectedData.map((category) => (
             <TableRow key={category._id} className="hover:bg-gray-50">
               <TableCell>
-                <img src={category.image} alt={category.name} className="w-16 h-16 object-cover rounded-md border" />
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  className="w-16 h-16 object-cover rounded-md border"
+                  width={64}
+                  height={64}
+                />
               </TableCell>
               <TableCell>{category.name}</TableCell>
               <TableCell>{category.description}</TableCell>

@@ -5,8 +5,7 @@ import MenSection from '@/components/MenSection';
 import OurService from '@/components/OurService';
 import Recommended from '@/components/Recommended';
 import ShoppingByCategories from '@/components/ShoppingByCategories';
-import Testimonial from '@/components/Testimonial';
-import WomenSection from '@/components/WomenSection';
+ import WomenSection from '@/components/WomenSection';
 import React from 'react';
 
 const page = () => {
@@ -21,8 +20,7 @@ const page = () => {
         <WomenSection />
         <MenSection />
         <BabySection />
-        {/* <Testimonial /> */}
- 
+  
         <OurService />
 
       </div>

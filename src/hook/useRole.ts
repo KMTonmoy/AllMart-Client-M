@@ -3,14 +3,15 @@ import { useContext, useEffect, useState } from "react";
 
 interface UserData {
     role?: string;
-    [key: string]: any;
+    email?: string;
+    [key: string]: string | undefined;
 }
 
 const useRole = () => {
     const [data, setData] = useState<UserData>({});
     const authContext = useContext(AuthContext);
 
-    const role = data[0]?.role;
+    const role = data?.role;
 
     useEffect(() => {
         if (!authContext || !authContext.user) return;

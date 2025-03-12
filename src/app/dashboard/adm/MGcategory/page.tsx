@@ -1,11 +1,19 @@
 'use client'
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CateGoryManagement } from "./CategoryManagement";
 import { CategoryFormDialog } from "@/components/AlertDialog/CategoryAddingAlert";
 
+interface CategoryData {
+    _id: string;
+    name: string;
+    image: string;
+    description: string;
+}
+
 const Page = () => {
-    const [categories, setCategories] = useState<any[]>([]);
+    const [categories, setCategories] = useState<CategoryData[]>([]);
 
     useEffect(() => {
         axios

@@ -23,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import Image from "next/image";
 
 interface Product {
   _id: string;
@@ -64,33 +65,21 @@ export function TableDemo({ products }: TableDemoProps) {
     if (!productToDelete) return;
 
     setLoading(true);
-    try {
-      const response = await fetch(`https://allmartserver.vercel.app/product/${productToDelete._id}`, {
-        method: "DELETE",
-      });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete product");
-      }
+    await fetch(`https://allmartserver.vercel.app/product/${productToDelete._id}`, {
+      method: "DELETE",
+    });
 
-      setProductList((prev) => prev.filter((p) => p._id !== productToDelete._id));
+    setProductList((prev) => prev.filter((p) => p._id !== productToDelete._id));
 
-      toast.success("Product deleted", {
-        description: `Product ${productToDelete.name} has been removed.`,
-        duration: 3000,
-      });
+    toast.success("Product deleted", {
+      description: `Product ${productToDelete.name} has been removed.`,
+      duration: 3000,
+    });
 
-      setTimeout(() => {
-        setProductToDelete(null);
-      }, 3000);
-
-    } catch (error) {
-      toast.error("Error deleting product", {
-        description: "There was a problem deleting the product.",
-      });
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(() => {
+      setProductToDelete(null);
+    }, 3000);
   }, [productToDelete]);
 
   const renderSkeletonLoader = () => {
@@ -141,13 +130,12 @@ export function TableDemo({ products }: TableDemoProps) {
           </TableRow>
         </TableHeader>
 
-        {/* Display skeleton loader when loading or no products */}
         {loading || productList.length === 0 ? renderSkeletonLoader() : (
           <TableBody>
             {selectedProducts.map((product) => (
               <TableRow key={product._id} className="hover:bg-gray-50">
                 <TableCell>
-                  <img src={product.images[0]} alt={product.name} className="w-16 h-16 object-cover rounded-md border" />
+                  <Image src={product.images[0]} alt={product.name} width={64} height={64} className="object-cover rounded-md border" />
                 </TableCell>
                 <TableCell className="font-medium">{product._id}</TableCell>
                 <TableCell>{product.name}</TableCell>

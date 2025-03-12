@@ -1,10 +1,11 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-900   text-white py-10">
+        <footer className="bg-gray-900 text-white py-10">
             <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 className="text-lg font-semibold mb-4">CUSTOMER SERVICE</h3>
@@ -46,10 +47,12 @@ const Footer = () => {
             </div>
             <div className="text-center mt-10 border-t border-gray-700 pt-5 text-gray-400">
                 <p>Copyright © {currentYear} Vinovathemes. All rights reserved.</p>
-                <img
+                <Image
                     src="https://mediamart-vinovatheme.myshopify.com/cdn/shop/files/payment_240x25.png?v=1614331012"
                     alt="Payment Methods"
                     className="mt-4 mx-auto"
+                    width={240}
+                    height={25}
                 />
             </div>
         </footer>

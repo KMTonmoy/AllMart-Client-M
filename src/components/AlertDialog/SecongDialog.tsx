@@ -8,7 +8,6 @@ import {
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
@@ -83,7 +82,13 @@ export function ProductFormDialog() {
     };
 
     const removeItem = (field: keyof Product, itemToRemove: string) => {
-        setProduct((prev) => ({ ...prev, [field]: prev[field].filter((item) => item !== itemToRemove) }));
+        setProduct((prev) => {
+            const fieldValue = prev[field];
+            if (Array.isArray(fieldValue)) {
+                return { ...prev, [field]: fieldValue.filter((item) => item !== itemToRemove) };
+            }
+            return prev;
+        });
     };
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -117,10 +122,6 @@ export function ProductFormDialog() {
     };
 
     const handleSubmit = async () => {
-        if (!product.images.length) {
-            Swal.fire("Error", "Please upload at least one image!", "error");
-            return;
-        }
 
         setLoading(true);
         try {
@@ -168,7 +169,7 @@ export function ProductFormDialog() {
                     Fill in the details below to add a new product to the catalog.
                 </AlertDialogDescription>
 
-                <div className="overflow-x-auto"> {/* Added overflow-x-auto here */}
+                <div className="overflow-x-auto">
                     {step === 1 && (
                         <div className="grid gap-4">
                             <Label>Product Name</Label>

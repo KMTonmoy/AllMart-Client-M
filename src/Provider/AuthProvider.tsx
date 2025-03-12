@@ -11,7 +11,7 @@ import {
     signInWithPopup,
     signOut,
     updateProfile,
-    signInWithPhoneNumber
+    signInWithPhoneNumber,
 } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 import axios from 'axios';
@@ -32,7 +32,7 @@ export const AuthContext = createContext<AuthContextProps>({} as AuthContextProp
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-let confirmationResult: any;
+let confirmationResult: import('firebase/auth').ConfirmationResult | null = null;
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -43,11 +43,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setLoading(true);
         try {
             await createUserWithEmailAndPassword(auth, email, password);
+            setLoading(false);
             router.push('/');
         } catch (error) {
-            console.error('Error creating user:', error);
-        } finally {
             setLoading(false);
+            console.error('Error creating user:', error);
         }
     };
 
@@ -55,11 +55,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setLoading(true);
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            setLoading(false);
             router.push('/');
         } catch (error) {
-            console.error('Error signing in:', error);
-        } finally {
             setLoading(false);
+            console.error('Error signing in:', error);
         }
     };
 
@@ -67,11 +67,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         setLoading(true);
         try {
             await signInWithPopup(auth, googleProvider);
+            setLoading(false);
             router.push('/');
         } catch (error) {
-            console.error('Error signing in with Google:', error);
-        } finally {
             setLoading(false);
+            console.error('Error signing in with Google:', error);
         }
     };
 
@@ -80,11 +80,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         try {
             await axios.get(`https://allmartserver.vercel.app/logout`, { withCredentials: true });
             await signOut(auth);
+            setLoading(false);
             router.push('/login');
         } catch (error) {
-            console.error('Error logging out:', error);
-        } finally {
             setLoading(false);
+            console.error('Error logging out:', error);
         }
     };
 
@@ -109,7 +109,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     const verifyOTP = async (code: string): Promise<boolean> => {
         try {
-            await confirmationResult.confirm(code);
+            await confirmationResult?.confirm(code);
             console.log('OTP verified');
             return true;
         } catch (error) {
@@ -142,4 +142,3 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 export default AuthProvider;
-   

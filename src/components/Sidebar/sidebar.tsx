@@ -1,17 +1,11 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import React from "react";
 import {
-    Bot,
     Folder,
-    LifeBuoy,
-    Map,
-    PieChart,
-    Send,
     Settings,
     SquareTerminal,
 } from "lucide-react";
-
 import {
     Sidebar,
     SidebarContent,
@@ -25,6 +19,7 @@ import { NavMain } from "./nav-main";
 
 import Link from "next/link";
 import { AuthContext } from "@/Provider/AuthProvider";
+
 const data = {
     navMain: [
         {
@@ -52,7 +47,6 @@ const data = {
                 },
             ],
         },
-
         {
             title: "Settings",
             url: "#",
@@ -78,7 +72,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarMenuButton size="lg" asChild>
                             <Link href="/">
                                 <div className="flex items-center justify-center">
-                                    <img className="w-[50px]" src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" alt="" />
+                                    <img className="w-[50px]" src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" alt="Logo" />
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <h2 className="font-bold text-xl">AllMart</h2>
@@ -92,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <NavMain items={data.navMain} />
             </SidebarContent>
             <SidebarFooter>
-                {user?.name}
+                {user?.displayName}
             </SidebarFooter>
         </Sidebar>
     );

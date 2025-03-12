@@ -8,7 +8,6 @@ import {
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
@@ -66,12 +65,7 @@ export function CategoryFormDialog() {
             setLoading(false);
             Swal.fire("Error", "Failed to add category. Try again!", "error");
         } 
-    };   
-
-
-
-    
-
+    };
 
     const closeDialog = () => {
         setCategory({ name: "", description: "", image: null });
