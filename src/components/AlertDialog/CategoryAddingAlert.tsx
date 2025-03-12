@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Image from "next/image";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -39,10 +40,13 @@ export function CategoryFormDialog() {
 
         setLoading(true);
         try {
-            const { data } = await axios.post("https://api.imgbb.com/1/upload?key=19c9072b07556f7849d6dea75b7e834d", formData);
+            const { data } = await axios.post(
+                "https://api.imgbb.com/1/upload?key=19c9072b07556f7849d6dea75b7e834d",
+                formData
+            );
             setCategory((prev) => ({ ...prev, image: data.data.display_url }));
             setLoading(false);
-        } catch (error) {
+        } catch {
             setLoading(false);
             Swal.fire("Error", "Failed to upload image. Try again!", "error");
         }
@@ -61,10 +65,10 @@ export function CategoryFormDialog() {
             setLoading(false);
             Swal.fire("Success", "Category added successfully!", "success");
             closeDialog();
-        } catch (error) {
+        } catch {
             setLoading(false);
             Swal.fire("Error", "Failed to add category. Try again!", "error");
-        } 
+        }
     };
 
     const closeDialog = () => {
@@ -92,12 +96,14 @@ export function CategoryFormDialog() {
                     <Input
                         value={category.name}
                         onChange={(e) => handleInputChange(e, "name")}
+                        placeholder="Enter category name"
                     />
 
                     <Label>Description</Label>
                     <Input
                         value={category.description}
                         onChange={(e) => handleInputChange(e, "description")}
+                        placeholder="Enter category description"
                     />
 
                     <Label>Category Image</Label>
@@ -108,11 +114,17 @@ export function CategoryFormDialog() {
                     />
 
                     {category.image && (
-                        <div className="mt-2">
-                            <img src={category.image} alt="Category" className="w-20 h-20 rounded" />
+                        <div className="mt-2 relative">
+                            <Image
+                                src={category.image}
+                                alt="Category Image"
+                                width={80}
+                                height={80}
+                                className="rounded"
+                            />
                             <button
                                 onClick={() => setCategory((prev) => ({ ...prev, image: null }))}
-                                className="ml-2 text-red-500"
+                                className="absolute top-0 right-0 text-red-500"
                             >
                                 <X size={14} />
                             </button>

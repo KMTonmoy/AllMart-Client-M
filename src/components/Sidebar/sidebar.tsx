@@ -19,6 +19,7 @@ import { NavMain } from "./nav-main";
 
 import Link from "next/link";
 import { AuthContext } from "@/Provider/AuthProvider";
+import Image from "next/image";
 
 const data = {
     navMain: [
@@ -62,7 +63,7 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { user } = React.useContext(AuthContext)
+    const { user } = React.useContext(AuthContext);
 
     return (
         <Sidebar collapsible="icon" {...props}>
@@ -72,7 +73,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarMenuButton size="lg" asChild>
                             <Link href="/">
                                 <div className="flex items-center justify-center">
-                                    <img className="w-[50px]" src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" alt="Logo" />
+                                    <Image
+                                        className="w-[50px]"
+                                        src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png"
+                                        alt="Logo"
+                                        width={50} 
+                                        height={50}
+                                    />
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <h2 className="font-bold text-xl">AllMart</h2>

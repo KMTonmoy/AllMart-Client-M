@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
@@ -17,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select";
-import JoditEditor from "jodit-react";
+import Image from "next/image";
 
 interface Category {
     name: string;
@@ -38,7 +36,6 @@ interface Product {
 export function ProductFormDialog() {
     const [categories, setCategories] = useState<Category[]>([]);
     const [step, setStep] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(false);
     const [product, setProduct] = useState<Product>({
         name: "",
         category: "",
@@ -61,42 +58,10 @@ export function ProductFormDialog() {
         setProduct((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
-    const handleTagInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === " " && e.currentTarget.value.trim()) {
-            const value = e.currentTarget.value.trim();
-            if (!product.tags.includes(value)) {
-                setProduct((prev) => ({ ...prev, tags: [...prev.tags, value] }));
-            }
-            e.currentTarget.value = "";
-        }
-    };
-
-    const handleColorInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === " " && e.currentTarget.value.trim()) {
-            const color = e.currentTarget.value.trim();
-            if (!product.colors.includes(color)) {
-                setProduct((prev) => ({ ...prev, colors: [...prev.colors, color] }));
-            }
-            e.currentTarget.value = "";
-        }
-    };
-
-    const removeItem = (field: keyof Product, itemToRemove: string) => {
-        setProduct((prev) => {
-            const fieldValue = prev[field];
-            if (Array.isArray(fieldValue)) {
-                return { ...prev, [field]: fieldValue.filter((item) => item !== itemToRemove) };
-            }
-            return prev;
-        });
-    };
-
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
         const files = Array.from(e.target.files);
         if (files.length + product.images.length > 4) return;
-
-        setLoading(true);
 
         const uploadedImages = await Promise.all(
             files.map(async (file) => {
@@ -111,7 +76,6 @@ export function ProductFormDialog() {
         );
 
         setProduct((prev) => ({ ...prev, images: [...prev.images, ...uploadedImages] }));
-        setLoading(false);
     };
 
     const removeImage = (index: number) => {
@@ -119,20 +83,6 @@ export function ProductFormDialog() {
             ...prev,
             images: prev.images.filter((_, i) => i !== index),
         }));
-    };
-
-    const handleSubmit = async () => {
-
-        setLoading(true);
-        try {
-            await axios.post("https://allmartserver.vercel.app/postProduct", product);
-            setLoading(false);
-            Swal.fire("Success", "Product added successfully!", "success");
-            closeDialog();
-        } catch (error) {
-            setLoading(false);
-            Swal.fire("Error", "Failed to add product. Try again!", "error");
-        }
     };
 
     const isStep1Valid = product.name && product.category && product.price && product.stock && product.gender;
@@ -154,7 +104,7 @@ export function ProductFormDialog() {
     };
 
     return (
-        <AlertDialog >
+        <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="outline">Add Product</Button>
             </AlertDialogTrigger>
@@ -174,7 +124,6 @@ export function ProductFormDialog() {
                         <div className="grid gap-4">
                             <Label>Product Name</Label>
                             <Input value={product.name} onChange={(e) => handleInputChange(e, "name")} />
-
                             <Label>Category</Label>
                             <Select onValueChange={(value) => setProduct({ ...product, category: value })}>
                                 <SelectTrigger>
@@ -186,86 +135,32 @@ export function ProductFormDialog() {
                                     ))}
                                 </SelectContent>
                             </Select>
-
                             <Label>Price ($)</Label>
                             <Input type="number" value={product.price} onChange={(e) => handleInputChange(e, "price")} />
-
                             <Label>Stock</Label>
                             <Input type="number" value={product.stock} onChange={(e) => handleInputChange(e, "stock")} />
-
                             <Label>Gender</Label>
                             <div className="flex gap-4">
                                 {["Men", "Women", "Baby", "Anyone"].map((gender) => (
-                                    <label key={gender} className="flex items-center gap-2">
-                                        <input type="radio" name="gender" value={gender} checked={product.gender === gender}
-                                            onChange={(e) => handleInputChange(e, "gender")} />
+                                    <label key={gender}>
+                                        <input type="radio" name="gender" value={gender} checked={product.gender === gender} onChange={(e) => handleInputChange(e, "gender")} />
                                         {gender}
                                     </label>
                                 ))}
                             </div>
-
                             <Label>Images</Label>
                             <Input type="file" accept="image/*" multiple onChange={handleImageUpload} />
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {product.images.map((image, index) => (
                                     <div key={index} className="relative w-20 h-20">
-                                        <img src={image} alt="Preview" className="w-full h-full rounded" />
-                                        <button onClick={() => removeImage(index)} className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1">
+                                        <Image src={image} alt="Preview" className="w-full h-full rounded" width={80} height={80} />
+                                        <button onClick={() => removeImage(index)}>
                                             <X size={14} />
                                         </button>
                                     </div>
                                 ))}
                             </div>
-
                             <Button onClick={() => setStep(2)} disabled={!isStep1Valid || !isImageValid}>Next</Button>
-                        </div>
-                    )}
-
-                    {step === 2 && (
-                        <div>
-
-                            <div className="mb-20">
-                                <Label>Tags</Label>
-                                <Input
-                                    onKeyDown={handleTagInput}
-                                    placeholder="Add a tag"
-                                />
-                                <div className="flex gap-2 mt-2">
-                                    {product.tags.map((tag, index) => (
-                                        <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
-                                            {tag}
-                                            <button onClick={() => removeItem("tags", tag)} className="ml-2 text-red-500">
-                                                <X size={12} />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <Label>Colors</Label>
-                                <Input
-                                    onKeyDown={handleColorInput}
-                                    placeholder="Add a color"
-                                />
-
-                                <div className="flex gap-2 mt-2">
-                                    {product.colors.map((color, index) => (
-                                        <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
-                                            {color}
-                                            <button onClick={() => removeItem("colors", color)} className="ml-2 text-red-500">
-                                                <X size={12} />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <Label>Description</Label>
-                            <JoditEditor value={product.description} onBlur={(newContent) => setProduct({ ...product, description: newContent })} />
-
-                            <div className="flex justify-between mt-4">
-                                <Button onClick={() => setStep(1)}>Back</Button>
-                                <AlertDialogAction onClick={handleSubmit} disabled={loading}>Submit</AlertDialogAction>
-                            </div>
                         </div>
                     )}
                 </div>

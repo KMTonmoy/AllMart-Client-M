@@ -1,7 +1,8 @@
-"use client";
+'use client';
 import React from "react";
 import Link from "next/link";
- 
+import Image from "next/image";
+
 const categories = [
   { name: "Men", image: "https://mediamart-vinovatheme.myshopify.com/cdn/shop/files/bn-1-1_1920x1920.jpg?v=1614331006", link: "/shop/men" },
   { name: "Women", image: "https://mediamart-vinovatheme.myshopify.com/cdn/shop/files/bn-1-2_1920x1920.jpg?v=1614331006", link: "/shop/women" },
@@ -24,7 +25,7 @@ const ShoppingByCategories = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {categories.map((category, index) => (
           <div key={index} className="relative group">
-            <img
+            <Image
               src={category.image}
               alt={category.name}
               width={320}
