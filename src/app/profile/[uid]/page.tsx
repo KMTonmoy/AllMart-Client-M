@@ -11,7 +11,7 @@ import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import Swal from "sweetalert2";
 import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import 'react-phone-number-input/style.css';
 
 interface UserData {
   _id: string;
@@ -106,7 +106,7 @@ const ProfilePage = () => {
   return (
     <div className="flex overflow-hidden justify-center items-center min-h-screen bg-gray-100 p-4 relative">
       {showAnimation && <Confetti width={width} height={height} />}
-
+      
       <audio ref={audioRef} src="/celebration.mp3" preload="auto" />
 
       <Card className="w-full max-w-md p-6 shadow-xl bg-white rounded-lg relative overflow-hidden">

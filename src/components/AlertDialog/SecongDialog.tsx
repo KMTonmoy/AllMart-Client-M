@@ -153,7 +153,7 @@ export function ProductFormDialog() {
     };
 
     return (
-        <AlertDialog>
+        <AlertDialog >
             <AlertDialogTrigger asChild>
                 <Button variant="outline">Add Product</Button>
             </AlertDialogTrigger>
@@ -168,106 +168,106 @@ export function ProductFormDialog() {
                     Fill in the details below to add a new product to the catalog.
                 </AlertDialogDescription>
 
-                {step === 1 && (
-                    <div className="grid gap-4">
-                        <Label>Product Name</Label>
-                        <Input value={product.name} onChange={(e) => handleInputChange(e, "name")} />
+                <div className="overflow-x-auto"> {/* Added overflow-x-auto here */}
+                    {step === 1 && (
+                        <div className="grid gap-4">
+                            <Label>Product Name</Label>
+                            <Input value={product.name} onChange={(e) => handleInputChange(e, "name")} />
 
-                        <Label>Category</Label>
-                        <Select onValueChange={(value) => setProduct({ ...product, category: value })}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select a category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map((category, index) => (
-                                    <SelectItem key={index} value={category.name}>{category.name}</SelectItem>
+                            <Label>Category</Label>
+                            <Select onValueChange={(value) => setProduct({ ...product, category: value })}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {categories.map((category, index) => (
+                                        <SelectItem key={index} value={category.name}>{category.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                            <Label>Price ($)</Label>
+                            <Input type="number" value={product.price} onChange={(e) => handleInputChange(e, "price")} />
+
+                            <Label>Stock</Label>
+                            <Input type="number" value={product.stock} onChange={(e) => handleInputChange(e, "stock")} />
+
+                            <Label>Gender</Label>
+                            <div className="flex gap-4">
+                                {["Men", "Women", "Baby", "Anyone"].map((gender) => (
+                                    <label key={gender} className="flex items-center gap-2">
+                                        <input type="radio" name="gender" value={gender} checked={product.gender === gender}
+                                            onChange={(e) => handleInputChange(e, "gender")} />
+                                        {gender}
+                                    </label>
                                 ))}
-                            </SelectContent>
-                        </Select>
+                            </div>
 
-                        <Label>Price ($)</Label>
-                        <Input type="number" value={product.price} onChange={(e) => handleInputChange(e, "price")} />
+                            <Label>Images</Label>
+                            <Input type="file" accept="image/*" multiple onChange={handleImageUpload} />
+                            <div className="flex flex-wrap gap-2 mt-2">
+                                {product.images.map((image, index) => (
+                                    <div key={index} className="relative w-20 h-20">
+                                        <img src={image} alt="Preview" className="w-full h-full rounded" />
+                                        <button onClick={() => removeImage(index)} className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1">
+                                            <X size={14} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
 
-                        <Label>Stock</Label>
-                        <Input type="number" value={product.stock} onChange={(e) => handleInputChange(e, "stock")} />
-
-                        <Label>Gender</Label>
-                        <div className="flex gap-4">
-                            {["Men", "Women", "Baby", "Anyone"].map((gender) => (
-                                <label key={gender} className="flex items-center gap-2">
-                                    <input type="radio" name="gender" value={gender} checked={product.gender === gender}
-                                        onChange={(e) => handleInputChange(e, "gender")} />
-                                    {gender}
-                                </label>
-                            ))}
+                            <Button onClick={() => setStep(2)} disabled={!isStep1Valid || !isImageValid}>Next</Button>
                         </div>
+                    )}
 
+                    {step === 2 && (
+                        <div>
 
-
-                        <Label>Images</Label>
-                        <Input type="file" accept="image/*" multiple onChange={handleImageUpload} />
-                        <div className="flex flex-wrap gap-2 mt-2">
-                            {product.images.map((image, index) => (
-                                <div key={index} className="relative w-20 h-20">
-                                    <img src={image} alt="Preview" className="w-full h-full rounded" />
-                                    <button onClick={() => removeImage(index)} className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1">
-                                        <X size={14} />
-                                    </button>
+                            <div className="mb-20">
+                                <Label>Tags</Label>
+                                <Input
+                                    onKeyDown={handleTagInput}
+                                    placeholder="Add a tag"
+                                />
+                                <div className="flex gap-2 mt-2">
+                                    {product.tags.map((tag, index) => (
+                                        <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
+                                            {tag}
+                                            <button onClick={() => removeItem("tags", tag)} className="ml-2 text-red-500">
+                                                <X size={12} />
+                                            </button>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
 
-                        <Button onClick={() => setStep(2)} disabled={!isStep1Valid || !isImageValid}>Next</Button>
-                    </div>
-                )}
+                                <Label>Colors</Label>
+                                <Input
+                                    onKeyDown={handleColorInput}
+                                    placeholder="Add a color"
+                                />
 
-                {step === 2 && (
-                    <div>
-
-                        <div className="mb-20">
-                            <Label>Tags</Label>
-                            <Input
-                                onKeyDown={handleTagInput}
-                                placeholder="Add a tag"
-                            />
-                            <div className="flex gap-2 mt-2">
-                                {product.tags.map((tag, index) => (
-                                    <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
-                                        {tag}
-                                        <button onClick={() => removeItem("tags", tag)} className="ml-2 text-red-500">
-                                            <X size={12} />
-                                        </button>
-                                    </div>
-                                ))}
+                                <div className="flex gap-2 mt-2">
+                                    {product.colors.map((color, index) => (
+                                        <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
+                                            {color}
+                                            <button onClick={() => removeItem("colors", color)} className="ml-2 text-red-500">
+                                                <X size={12} />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
-                            <Label>Colors</Label>
-                            <Input
-                                onKeyDown={handleColorInput}
-                                placeholder="Add a color"
-                            />
+                            <Label>Description</Label>
+                            <JoditEditor value={product.description} onBlur={(newContent) => setProduct({ ...product, description: newContent })} />
 
-                            <div className="flex gap-2 mt-2">
-                                {product.colors.map((color, index) => (
-                                    <div key={index} className="flex items-center bg-gray-200 p-2 rounded">
-                                        {color}
-                                        <button onClick={() => removeItem("colors", color)} className="ml-2 text-red-500">
-                                            <X size={12} />
-                                        </button>
-                                    </div>
-                                ))}
+                            <div className="flex justify-between mt-4">
+                                <Button onClick={() => setStep(1)}>Back</Button>
+                                <AlertDialogAction onClick={handleSubmit} disabled={loading}>Submit</AlertDialogAction>
                             </div>
                         </div>
-
-                        <Label>Description</Label>
-                        <JoditEditor value={product.description} onBlur={(newContent) => setProduct({ ...product, description: newContent })} />
-
-                        <div className="flex justify-between mt-4">
-                            <Button onClick={() => setStep(1)}>Back</Button>
-                            <AlertDialogAction onClick={handleSubmit} disabled={loading}>Submit</AlertDialogAction>
-                        </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </AlertDialogContent>
         </AlertDialog>
     );

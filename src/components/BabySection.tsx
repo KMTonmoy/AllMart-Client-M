@@ -53,6 +53,20 @@ const BabySection = () => {
                 </p>
             </div>
 
+
+
+
+            {products.length == 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                    {Array.from({ length: 9 }).map((_, i) => (
+                        <div key={i} className="border rounded-lg p-4 shadow-md w-full">
+                            <Skeleton.Image active style={{ width: '100%', height: 150 }} />
+                            <Skeleton active paragraph={{ rows: 2 }} />
+                        </div>
+                    ))}
+                </div>
+            )}
+
             {loading ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
                     {Array.from({ length: 9 }).map((_, i) => (

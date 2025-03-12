@@ -93,6 +93,38 @@ export function TableDemo({ products }: TableDemoProps) {
     }
   }, [productToDelete]);
 
+  const renderSkeletonLoader = () => {
+    return (
+      <TableBody>
+        {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
+          <TableRow key={index} className="animate-pulse hover:bg-gray-50">
+            <TableCell>
+              <div className="w-16 h-16 bg-gray-200 rounded-md" />
+            </TableCell>
+            <TableCell>
+              <div className="w-20 h-4 bg-gray-200 rounded" />
+            </TableCell>
+            <TableCell>
+              <div className="w-32 h-4 bg-gray-200 rounded" />
+            </TableCell>
+            <TableCell>
+              <div className="w-24 h-4 bg-gray-200 rounded" />
+            </TableCell>
+            <TableCell>
+              <div className="w-20 h-4 bg-gray-200 rounded" />
+            </TableCell>
+            <TableCell>
+              <div className="w-20 h-4 bg-gray-200 rounded" />
+            </TableCell>
+            <TableCell>
+              <div className="w-20 h-8 bg-gray-200 rounded" />
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    );
+  };
+
   return (
     <div className="w-full p-4">
       <Table className="w-full border border-gray-200 shadow-md rounded-lg">
@@ -108,46 +140,51 @@ export function TableDemo({ products }: TableDemoProps) {
             <TableHead className="w-[120px] text-center">Actions</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {selectedProducts.map((product) => (
-            <TableRow key={product._id} className="hover:bg-gray-50">
-              <TableCell>
-                <img src={product.images[0]} alt={product.name} className="w-16 h-16 object-cover rounded-md border" />
-              </TableCell>
-              <TableCell className="font-medium">{product._id}</TableCell>
-              <TableCell>{product.name}</TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell className="font-semibold">${product.price}</TableCell>
-              <TableCell>{product.stock}</TableCell>
-              <TableCell className="flex gap-2 justify-center">
-                <Button variant="outline" size="icon">
-                  <Pencil className="w-4 h-4 text-blue-600" />
-                </Button>
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="outline" size="icon" onClick={() => setProductToDelete(product)}>
-                      <Trash className="w-4 h-4 text-red-600" />
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete <strong>{productToDelete?.name}</strong>.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={handleDelete} disabled={loading}>
-                        {loading ? "Deleting..." : "Delete"}
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+
+        {/* Display skeleton loader when loading or no products */}
+        {loading || productList.length === 0 ? renderSkeletonLoader() : (
+          <TableBody>
+            {selectedProducts.map((product) => (
+              <TableRow key={product._id} className="hover:bg-gray-50">
+                <TableCell>
+                  <img src={product.images[0]} alt={product.name} className="w-16 h-16 object-cover rounded-md border" />
+                </TableCell>
+                <TableCell className="font-medium">{product._id}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.category}</TableCell>
+                <TableCell className="font-semibold">${product.price}</TableCell>
+                <TableCell>{product.stock}</TableCell>
+                <TableCell className="flex gap-2 justify-center">
+                  <Button variant="outline" size="icon">
+                    <Pencil className="w-4 h-4 text-blue-600" />
+                  </Button>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="outline" size="icon" onClick={() => setProductToDelete(product)}>
+                        <Trash className="w-4 h-4 text-red-600" />
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently delete <strong>{productToDelete?.name}</strong>.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleDelete} disabled={loading}>
+                          {loading ? "Deleting..." : "Delete"}
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
+
         <TableFooter>
           <TableRow className="flex justify-between">
             <TableCell className="flex items-center">

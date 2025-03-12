@@ -11,6 +11,7 @@ import {
     signInWithPopup,
     signOut,
     updateProfile,
+    signInWithPhoneNumber
 } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 import axios from 'axios';
@@ -23,27 +24,17 @@ interface AuthContextProps {
     signInWithGoogle: () => Promise<void>;
     logOut: () => Promise<void>;
     updateUserProfile: (name: string, photo: string) => Promise<void>;
+    sendOTP: (phoneNumber: string) => Promise<void>;
+    verifyOTP: (code: string) => Promise<boolean>;
 }
 
-export const AuthContext = createContext<AuthContextProps | null>(null);
+export const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+let confirmationResult: any;
 
-interface AuthProviderProps {
-    children: ReactNode;
-}
-
-const detectDevice = (): string => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (/mobile|iphone|android|ipad/.test(userAgent)) return 'phone';
-    if (/tablet/.test(userAgent)) return 'tablet';
-    if (/mac|windows|linux/.test(userAgent)) return 'laptop';
-    if (/smartwatch/.test(userAgent)) return 'watch';
-    return 'computer';
-};
-
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const router = useRouter();
@@ -55,7 +46,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             router.push('/');
         } catch (error) {
             console.error('Error creating user:', error);
-            throw error;
         } finally {
             setLoading(false);
         }
@@ -68,7 +58,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             router.push('/');
         } catch (error) {
             console.error('Error signing in:', error);
-            throw error;
         } finally {
             setLoading(false);
         }
@@ -81,7 +70,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             router.push('/');
         } catch (error) {
             console.error('Error signing in with Google:', error);
-            throw error;
         } finally {
             setLoading(false);
         }
@@ -95,7 +83,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             router.push('/login');
         } catch (error) {
             console.error('Error logging out:', error);
-            throw error;
         } finally {
             setLoading(false);
         }
@@ -104,55 +91,36 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const updateUserProfile = async (name: string, photo: string): Promise<void> => {
         try {
             if (auth.currentUser) {
-                await updateProfile(auth.currentUser, {
-                    displayName: name,
-                    photoURL: photo,
-                });
+                await updateProfile(auth.currentUser, { displayName: name, photoURL: photo });
             }
         } catch (error) {
             console.error('Error updating user profile:', error);
-            throw error;
         }
     };
 
-    const saveUser = async (user: User): Promise<any> => {
+    const sendOTP = async (phoneNumber: string): Promise<void> => {
         try {
-            const { data: existingUser } = await axios.get(`http://localhost:8000/users/${user.email}`);
-            let devices = existingUser?.devices || [];
-
-            const currentDevice = detectDevice();
-
-            if (!devices.includes(currentDevice)) {
-                devices.push(currentDevice);
-            }
-
-            const currentUser = {
-                email: user.email,
-                name: user.displayName,
-                photo: user.photoURL,
-                role: 'user',
-                devices,
-            };
-            const { data } = await axios.put(`http://localhost:8000/user`, currentUser);
-            return data;
+            confirmationResult = await signInWithPhoneNumber(auth, phoneNumber);
+            console.log('OTP sent');
         } catch (error) {
-            console.error('Error saving user:', error);
-            throw error;
+            console.error('Error sending OTP:', error);
+        }
+    };
+
+    const verifyOTP = async (code: string): Promise<boolean> => {
+        try {
+            await confirmationResult.confirm(code);
+            console.log('OTP verified');
+            return true;
+        } catch (error) {
+            console.error('Error verifying OTP:', error);
+            return false;
         }
     };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
-            if (currentUser) {
-                setTimeout(async () => {
-                    try {
-                        await saveUser(currentUser);
-                    } catch (error) {
-                        console.error('Error handling auth state change:', error);
-                    }
-                }, 5000);
-            }
             setLoading(false);
         });
         return () => unsubscribe();
@@ -166,9 +134,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         signInWithGoogle,
         logOut,
         updateUserProfile,
+        sendOTP,
+        verifyOTP,
     };
 
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
+   

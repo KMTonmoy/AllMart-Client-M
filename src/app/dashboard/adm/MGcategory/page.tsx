@@ -1,9 +1,32 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { CateGoryManagement } from "./CategoryManagement";
+import { CategoryFormDialog } from "@/components/AlertDialog/CategoryAddingAlert";
 
-const page = () => {
+const Page = () => {
+    const [categories, setCategories] = useState<any[]>([]);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/category")
+            .then((response) => {
+                setCategories(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching categories:", error);
+            });
+    }, []);
+
     return (
-        <div>page</div>
-    )
-}
+        <div className="w-full flex flex-col p-4">
+            <div className="mb-4 flex justify-end">
+                <CategoryFormDialog />
+            </div>
 
-export default page
+            <CateGoryManagement data={categories} />
+        </div>
+    );
+};
+
+export default Page;

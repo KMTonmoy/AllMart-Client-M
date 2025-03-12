@@ -27,6 +27,7 @@ import {
     AvatarImage,
 } from "@/components/ui/avatar";
 import { usePathname } from 'next/navigation';
+import useRole from '@/hook/useRole';
 
 const womenCategories = [
     { id: '1', label: 'Dresses' },
@@ -60,13 +61,17 @@ const generateMenuItems = (items: { id: string; label: string }[]): MenuProps['i
 };
 
 const Navbar = () => {
+    const { role } = useRole();
     const pathname = usePathname();
     const isDashboardPage = pathname?.startsWith('/dashboard');
-    const { user, logOut } = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
 
     if (isDashboardPage) {
         return null;
     }
+
+    const user = authContext?.user;
+    const logOut = authContext?.logOut;
 
     return (
         <div>
@@ -75,7 +80,7 @@ const Navbar = () => {
                     <div className="max-w-7xl mx-auto flex items-center justify-between px-5 py-5">
                         <Link href="/">
                             <div className="flex items-center gap-2">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" className="w-[50px] h-[50px]" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/3225/3225209.png" className="w-[50px] h-[50px]" alt="Logo" />
                                 <h1 className="md:block hidden">All Mart</h1>
                             </div>
                         </Link>
@@ -90,7 +95,7 @@ const Navbar = () => {
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Avatar>
-                                            <AvatarImage src={user?.photoURL} alt="User" />
+                                            <AvatarImage src={user?.photoURL || 'https://cdn-icons-gif.flaticon.com/8717/8717910.gif'} alt="User" />
                                             <AvatarFallback>CN</AvatarFallback>
                                         </Avatar>
                                     </DropdownMenuTrigger>
@@ -101,9 +106,15 @@ const Navbar = () => {
                                             <Link href={`/profile/${user?.uid}`}>
                                                 <DropdownMenuItem><User /><span>Profile</span></DropdownMenuItem>
                                             </Link>
-                                            <Link href={'/dashboard'}>
-                                                <DropdownMenuItem><CreditCard /><span>Dashboard</span></DropdownMenuItem>
-                                            </Link>
+                                            {role === 'admin' ? (
+                                                <Link href={'/dashboard'}>
+                                                    <DropdownMenuItem><CreditCard /><span>Dashboard</span></DropdownMenuItem>
+                                                </Link>
+                                            ) : (
+                                                <Link href={'/MyOrders'}>
+                                                    <DropdownMenuItem><CreditCard /><span>My Orders</span></DropdownMenuItem>
+                                                </Link>
+                                            )}
                                             <Link href={'/settings'}>
                                                 <DropdownMenuItem><Settings /><span>Settings</span></DropdownMenuItem>
                                             </Link>
@@ -122,11 +133,11 @@ const Navbar = () => {
                             ) : (
                                 <div className="flex gap-3 items-center">
                                     <Link href={'/login'}>
-                                        <p className="text-[20px] md:text-[26px]"> <UserOutlined /> </p>
+                                        <p className="text-[20px] md:text-[26px]"><UserOutlined /></p>
                                         <p className="text-[7px] md:text-[10px] font-[600]">LOG IN</p>
                                     </Link>
                                     <button>
-                                        <p className="text-[20px] md:text-[26px]"> <ShoppingCartOutlined /> </p>
+                                        <p className="text-[20px] md:text-[26px]"><ShoppingCartOutlined /></p>
                                         <p className="text-[7px] md:text-[10px] font-[600]">MY CART</p>
                                     </button>
                                 </div>
