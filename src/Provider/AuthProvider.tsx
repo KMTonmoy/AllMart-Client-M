@@ -78,7 +78,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const logOut = async (): Promise<void> => {
         setLoading(true);
         try {
-            await axios.get(`http://localhost:8000/logout`, { withCredentials: true });
+            await axios.get(`https://allmartserver.vercel.app/logout`, { withCredentials: true });
             await signOut(auth);
             router.push('/login');
         } catch (error) {

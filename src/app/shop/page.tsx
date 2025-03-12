@@ -11,7 +11,7 @@ const ShopPage = () => {
     const [isFilterOpen, setIsFilterOpen] = useState(false); // Track filter sidebar state
 
     useEffect(() => {
-        fetch('http://localhost:8000/products')
+        fetch('https://allmartserver.vercel.app/products')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

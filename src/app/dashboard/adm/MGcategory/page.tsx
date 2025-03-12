@@ -9,7 +9,7 @@ const Page = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/category")
+            .get("https://allmartserver.vercel.app/category")
             .then((response) => {
                 setCategories(response.data);
             })

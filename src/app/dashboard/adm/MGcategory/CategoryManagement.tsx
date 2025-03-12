@@ -62,7 +62,7 @@ export function CateGoryManagement({ data }: CateGoryManagementProps) {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8000/category/${dataToDelete._id}`, {
+      const response = await fetch(`https://allmartserver.vercel.app/category/${dataToDelete._id}`, {
         method: "DELETE",
       });
 

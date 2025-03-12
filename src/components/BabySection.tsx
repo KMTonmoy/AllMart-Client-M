@@ -26,7 +26,7 @@ const BabySection = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:8000/products');
+                const response = await fetch('https://allmartserver.vercel.app/products');
                 const data = await response.json();
                 const babyProducts = data.filter((product: Product) => product.gender === 'baby');
                 setProducts(babyProducts);

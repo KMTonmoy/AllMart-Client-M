@@ -10,7 +10,7 @@ const Page = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/products")
+      .get("https://allmartserver.vercel.app/products")
       .then((response) => {
         setProducts(response.data);
       })

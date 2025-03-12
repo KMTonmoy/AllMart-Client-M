@@ -20,7 +20,7 @@ const useRole = () => {
 
         const fetchUserData = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/users/${email}`);
+                const response = await fetch(`https://allmartserver.vercel.app/users/${email}`);
                 const json = await response.json();
                 setData(json);
             } catch (error) {

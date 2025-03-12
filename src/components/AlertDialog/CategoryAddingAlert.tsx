@@ -58,7 +58,7 @@ export function CategoryFormDialog() {
         setLoading(true);
 
         try {
-            await axios.post("http://localhost:8000/Postcategory", category);
+            await axios.post("https://allmartserver.vercel.app/Postcategory", category);
             setLoading(false);
             Swal.fire("Success", "Category added successfully!", "success");
             closeDialog();

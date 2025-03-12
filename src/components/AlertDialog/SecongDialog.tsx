@@ -53,7 +53,7 @@ export function ProductFormDialog() {
     });
 
     useEffect(() => {
-        fetch("http://localhost:8000/category")
+        fetch("https://allmartserver.vercel.app/category")
             .then((res) => res.json())
             .then((data: Category[]) => setCategories(data));
     }, []);
@@ -124,7 +124,7 @@ export function ProductFormDialog() {
 
         setLoading(true);
         try {
-            await axios.post("http://localhost:8000/postProduct", product);
+            await axios.post("https://allmartserver.vercel.app/postProduct", product);
             setLoading(false);
             Swal.fire("Success", "Product added successfully!", "success");
             closeDialog();

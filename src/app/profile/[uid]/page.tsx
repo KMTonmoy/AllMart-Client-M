@@ -38,7 +38,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:8000/users/${email}`)
+      fetch(`https://allmartserver.vercel.app/users/${email}`)
         .then((res) => res.json())
         .then((userData: UserData) => {
           setData(userData);
@@ -59,7 +59,7 @@ const ProfilePage = () => {
   const handleSave = () => {
     if (!data) return;
 
-    fetch(`http://localhost:8000/users/${email}`, {
+    fetch(`https://allmartserver.vercel.app/users/${email}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

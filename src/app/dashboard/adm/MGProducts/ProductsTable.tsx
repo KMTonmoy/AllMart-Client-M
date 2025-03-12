@@ -65,7 +65,7 @@ export function TableDemo({ products }: TableDemoProps) {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8000/product/${productToDelete._id}`, {
+      const response = await fetch(`https://allmartserver.vercel.app/product/${productToDelete._id}`, {
         method: "DELETE",
       });
 

@@ -21,7 +21,7 @@ const Recommended: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/products')
+        fetch('https://allmartserver.vercel.app/products')
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data.slice(-4));
